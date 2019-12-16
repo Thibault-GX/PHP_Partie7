@@ -9,6 +9,7 @@ $fileExtension = "";
 
 // Cette fonction va nous permettre de vérifier l'extension du fichier téléchargé et d'afficher un message en fonction du résultat retourné.
 function verifyExtension() {
+    // On vérifie d'abord si le champ est vide, si ce n'est pas le cas on va chercher puis on vérifie l'extension du fichier et on affiche des messages différents selon les trois cas possibles : vide, pdf ou différent de pdf.
     if ($_FILES['userFile']['name'] == "") {
         echo ('Vous n\'avez envoyé aucun fichier pour cette fois-ci.');
     } else {
@@ -16,7 +17,7 @@ function verifyExtension() {
         $fileExtension = $fileDetails['extension'];
         if ($fileExtension == 'pdf') {
             echo ('Le fichier que vous nous avez envoyé est le suivant : ' . $_FILES['userFile']['name'] . '.');
-        } elseif (($fileExtension != 'pdf') & ($fileExtension != "")) {
+        } else {
             echo ('Votre fichier n\'est pas un PDF, veuillez modifier le type de fichier que vous souhaitez uploader.');
         }
     }
